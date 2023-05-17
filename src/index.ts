@@ -90,8 +90,6 @@ export const build = async ({
 
   console.log('Installing required dependencies...');
 
-  console.log('Installed python version: pythonVersion', pythonVersion)
-
   await installRequirement({
     pythonPath: pythonVersion.pythonPath,
     pipPath: pythonVersion.pipPath,
