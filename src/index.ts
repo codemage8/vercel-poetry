@@ -95,7 +95,7 @@ export const build = async ({
 
   debug('Extracting requirements.txt file')
   const baseDirectory = dirname(pythonVersion.pipPath)
-  const poetryPath = baseDirectory ? `${baseDirectory}/poetry` : 'poetry'
+  const poetryPath = baseDirectory.includes('/') ? `${baseDirectory}/poetry` : 'poetry'
 
   const cmdArgs = [
     "export",
