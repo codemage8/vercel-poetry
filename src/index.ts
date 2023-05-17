@@ -97,18 +97,17 @@ export const build = async ({
   const baseDirectory = dirname(pythonVersion.pipPath)
   const poetryPath = baseDirectory ? `${baseDirectory}/poetry` : 'poetry'
 
-  const requirementsTxtPath = fsFiles[requirementsTxt].fsPath;
   const cmdArgs = [
     "export",
     "--without-hashes",
     "-f",
     "requirements.txt",
     "--output",
-    requirementsTxtPath,
+    requirementsTxt,
   ];
   // Export requirements.txt file before installation of requirements file
   await execa(poetryPath, cmdArgs, { cwd: workPath });
-  debug(`Successfully written requirement.txt file to ${requirementsTxtPath}`)
+  console.log(`Successfully written requirement.txt file to ${requirementsTxt}`)
 
   if (fsFiles[requirementsTxt]) {
     debug('Found local "requirements.txt"');
