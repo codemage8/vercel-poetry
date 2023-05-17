@@ -1,6 +1,6 @@
 {
   "name": "@devjin8/vercel-poetry",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "main": "./dist/index.js",
   "files": [
     "dist",
