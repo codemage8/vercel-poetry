@@ -24,5 +24,8 @@
     "execa": "^1.0.0",
     "fs-extra": "10.0.0",
     "typescript": "^5.0.4"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
