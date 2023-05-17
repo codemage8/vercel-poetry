@@ -4,7 +4,8 @@
   "main": "./dist/index.js",
   "license": "Apache-2.0",
   "files": [
-    "dist"
+    "dist",
+    "vc_init.py"
   ],
   "repository": {
     "type": "git",
