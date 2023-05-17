@@ -16,8 +16,6 @@ async function main() {
       join(__dirname, 'src/index.ts'),
       '-e',
       '@vercel/build-utils',
-      '-e',
-      '@vercel/python',
       '-o',
       outDir,
     ],

@@ -1,8 +1,7 @@
 {
   "name": "@devjin8/vercel-poetry",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "main": "./dist/index.js",
-  "license": "Apache-2.0",
   "files": [
     "dist",
     "vc_init.py"
@@ -12,23 +11,20 @@
     "url": "https://github.com/zilinj88/vercel-poetry.git"
   },
   "scripts": {
-    "build": "NODE_OPTIONS=--openssl-legacy-provider node build"
+    "build": "NODE_OPTIONS=--openssl-legacy-provider node build",
+    "build:publish": "pnpm build && pnpm publish"
   },
   "dependencies": {
-    "@vercel/python": "^3.1.60",
     "execa": "^1.0.0"
   },
   "devDependencies": {
     "@types/execa": "^0.9.0",
+    "@types/glob": "^8.1.0",
     "@types/jest": "27.4.1",
     "@types/node": "14.18.33",
     "@vercel/build-utils": "6.7.2",
     "@vercel/ncc": "0.24.0",
-    "fs-extra": "10.0.0",
-    "prettier": "^2.8.8",
+    "fs-extra": "^11.1.1",
     "typescript": "^5.0.4"
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }
