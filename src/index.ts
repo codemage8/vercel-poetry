@@ -59,6 +59,20 @@ export const build = async ({
   debug('installing poetry')
   pipInstall(pythonVersion.pipPath, workPath, ["-U",  "poetry"]);
 
+  const cmdArgs = [
+    "-m",
+    "poetry",
+    "export",
+    "--without-hashes",
+    "-f",
+    "requirements.txt",
+    "--output",
+    "requirements.txt",
+  ];
+  // Export requirements.txt file before installation of requirements file
+  await execa(pythonVersion.pythonPath, cmdArgs, { cwd: workPath });
+  console.log(`Successfully written requirement.txt file`)
+
   try {
     // See: https://stackoverflow.com/a/44728772/376773
     //
@@ -94,22 +108,6 @@ export const build = async ({
 
   fsFiles = await glob('**', workPath);
   const requirementsTxt = join(entryDirectory, 'requirements.txt');
-
-  debug('Extracting requirements.txt file')
-  const baseDirectory = dirname(pythonVersion.pipPath)
-  const poetryPath = baseDirectory.includes('/') ? `${baseDirectory}/poetry` : 'poetry'
-
-  const cmdArgs = [
-    "export",
-    "--without-hashes",
-    "-f",
-    "requirements.txt",
-    "--output",
-    requirementsTxt,
-  ];
-  // Export requirements.txt file before installation of requirements file
-  await execa(poetryPath, cmdArgs, { cwd: workPath });
-  console.log(`Successfully written requirement.txt file to ${requirementsTxt}`)
 
   if (fsFiles[requirementsTxt]) {
     debug('Found local "requirements.txt"');
