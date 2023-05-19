@@ -127,6 +127,13 @@ export const build = async ({
     });
   }
 
+  // After installation of requirements.txt file finished, run the buildCommand if specified
+  if (config.buildCommand) {
+    console.log(`Running ${pythonVersion.pythonPath} ${config.buildCommand}`);
+    const cmdArgs = config.buildCommand.split(' ');
+    await execa(pythonVersion.pythonPath, cmdArgs, { cwd: workPath });
+  }
+
   const originalPyPath = join(__dirname, '..', 'vc_init.py');
   const originalHandlerPyContents = await readFile(originalPyPath, 'utf8');
   debug('Entrypoint is', entrypoint);
